@@ -163,12 +163,10 @@
   .kofi-banner p { margin: 0; color: var(--muted); font-size: 14px; }
   .kofi-banner p strong { color: var(--text); }
 
-  .kofi-btn {
+  .kofi-btn, .play-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--accent);
-    color: #1a1a1a;
     font-weight: 700;
     font-family: 'Inter', sans-serif;
     text-decoration: none;
@@ -178,9 +176,14 @@
     box-shadow: 0 4px 0 #000;
     transition: transform 0.08s ease, box-shadow 0.08s ease;
     font-size: 14px;
+    white-space: nowrap;
   }
-  .kofi-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 #000; }
-  .kofi-btn:active { transform: translateY(4px); box-shadow: 0 0 0 #000; }
+  .kofi-btn { background: var(--accent); color: #1a1a1a; }
+  .play-btn { background: var(--accent-2); color: #0e1320; }
+  .kofi-btn:hover, .play-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 #000; }
+  .kofi-btn:active, .play-btn:active { transform: translateY(4px); box-shadow: 0 0 0 #000; }
+
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
 
   /* ============ NAV ============ */
   nav.cats {
@@ -363,13 +366,18 @@
       <span class="pill">No tracking, no ads</span>
     </div>
 
-    <!-- Ko-fi donation stub -->
+    <!-- Ko-fi donation + play CTA -->
     <div class="kofi-banner">
-      <p><strong>Found this useful?</strong> This page is free and stays free. If it saved you time, a coffee helps keep it updated.</p>
-      <!-- TODO: replace YOUR_KOFI_USERNAME with your actual Ko-fi handle -->
-      <a class="kofi-btn" href="https://ko-fi.com/defiantcrow" target="_blank" rel="noopener noreferrer">
-        ☕ Buy me a coffee
-      </a>
+      <p><strong>New here?</strong> Click "Play the game" to jump straight in. <strong>Found this useful?</strong> A coffee keeps this page free and updated.</p>
+      <div class="btn-row">
+        <a class="play-btn" href="https://www.legendsofidleon.com/" target="_blank" rel="noopener noreferrer">
+          🎮 Play the game
+        </a>
+        <!-- TODO: replace YOUR_KOFI_USERNAME with your actual Ko-fi handle -->
+        <a class="kofi-btn" href="https://ko-fi.com/YOUR_KOFI_USERNAME" target="_blank" rel="noopener noreferrer">
+          ☕ Buy me a coffee
+        </a>
+      </div>
     </div>
   </header>
 
@@ -410,6 +418,12 @@
         <div class="top"><h3>Idleon Insight</h3><span class="tag tool">Tool</span></div>
         <p>By Corbeno. Searchable database of game data with regex and string support — great when you need to look up a specific drop or item.</p>
         <div class="domain">idleoninsight.com</div>
+      </a>
+
+      <a class="card" href="https://ieautoreview-scoli.pythonanywhere.com/" target="_blank" rel="noopener">
+        <div class="top"><h3>IE AutoReview</h3><span class="tag tool">Tool</span></div>
+        <p>By Scoli290. Generates tiered, automated account advice — what to fix next, ranked by priority, grouped by character. The "what should I be doing?" answer machine.</p>
+        <div class="domain">ieautoreview-scoli.pythonanywhere.com</div>
       </a>
 
     </div>
@@ -537,7 +551,12 @@
 
   <!-- ============ FOOTER ============ -->
   <footer>
-    <div>Made by a fellow Idleon player · <a href="#">Back to top</a></div>
+    <div>
+      Got a resource I'm missing or a broken link?
+      <!-- TODO: change "idleonhub.com" to your actual domain once you pick one. Catch-all means anything@yourdomain works. -->
+      <a href="mailto:suggestions@idleonhub.com?subject=Idleon%20Hub%20suggestion">Email us a suggestion</a>
+    </div>
+    <div style="margin-top: 6px;">Made by a fellow Idleon player · <a href="#">Back to top</a></div>
     <div class="disclaimer">
       Idleon Hub is an unofficial fan-made resource directory. Legends of Idleon is created by LavaFlame2.
       This site is not affiliated with or endorsed by the game's developer. All linked resources belong to their respective creators.
