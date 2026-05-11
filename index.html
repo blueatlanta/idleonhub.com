@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Idleon Hub — Tools, Guides & Calculators for Legends of Idleon</title>
+<meta name="description" content="A curated directory of the best Legends of Idleon tools, calculators, wikis, spreadsheets and community resources. One page, no fluff." />
+
+<!-- Open Graph / social -->
+<meta property="og:title" content="Idleon Hub — Tools & Resources for Legends of Idleon" />
+<meta property="og:description" content="The curated directory of the best Idleon tools, calculators, wikis and guides." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0e1320;
+    --bg-2: #131a2c;
+    --panel: #1a2238;
+    --panel-2: #222b46;
+    --border: #2a3556;
+    --text: #e8ecf7;
+    --muted: #8b95b8;
+    --accent: #ffd23f;       /* idleon-ish coin gold */
+    --accent-2: #4ad7d1;     /* mana/teal */
+    --accent-3: #ff5d8f;     /* pink pop */
+    --success: #6ee7a3;
+    --danger: #ef5a6f;
+    --shadow: 0 8px 0 rgba(0,0,0,0.4), 0 12px 24px rgba(0,0,0,0.35);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(74,215,209,0.10), transparent 60%),
+      radial-gradient(800px 500px at 110% 10%, rgba(255,93,143,0.10), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  /* subtle pixel grid backdrop */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  /* ============ HEADER ============ */
+  header.hero {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 36px 28px;
+    border: 2px solid var(--border);
+    background: linear-gradient(180deg, var(--panel) 0%, var(--bg-2) 100%);
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::after {
+    content: "";
+    position: absolute; right: -40px; top: -40px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  .logo {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 22px;
+    color: var(--accent);
+    letter-spacing: 1px;
+    text-shadow: 3px 3px 0 #000;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo .coin {
+    width: 22px; height: 22px;
+    background: var(--accent);
+    border: 2px solid #000;
+    border-radius: 50%;
+    box-shadow: inset -4px -4px 0 rgba(0,0,0,0.25);
+    display: inline-block;
+    animation: spin 2.4s ease-in-out infinite;
+  }
+  @keyframes spin {
+    0%, 100% { transform: rotateY(0deg); }
+    50% { transform: rotateY(180deg); }
+  }
+
+  header.hero h1 {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  header.hero h1 span { color: var(--accent-2); }
+  header.hero p.lede {
+    margin: 0;
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 70ch;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    background: rgba(255,255,255,0.02);
+  }
+  .pill strong { color: var(--accent); }
+
+  /* ============ KO-FI BANNER ============ */
+  .kofi-banner {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    border: 2px dashed var(--border);
+    border-radius: 6px;
+    background: rgba(255, 210, 63, 0.04);
+  }
+  .kofi-banner p { margin: 0; color: var(--muted); font-size: 14px; }
+  .kofi-banner p strong { color: var(--text); }
+
+  .kofi-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #1a1a1a;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    border: 2px solid #000;
+    box-shadow: 0 4px 0 #000;
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+    font-size: 14px;
+  }
+  .kofi-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 #000; }
+  .kofi-btn:active { transform: translateY(4px); box-shadow: 0 0 0 #000; }
+
+  /* ============ NAV ============ */
+  nav.cats {
+    margin: 28px 0 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  nav.cats a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--muted);
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--panel);
+    transition: all 0.15s ease;
+  }
+  nav.cats a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ============ SECTIONS ============ */
+  section.cat {
+    margin-top: 40px;
+    scroll-margin-top: 20px;
+  }
+  section.cat h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: var(--accent-2);
+    letter-spacing: 1px;
+    margin: 0 0 6px;
+    text-shadow: 2px 2px 0 #000;
+  }
+  section.cat .sub {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 18px;
+  }
+
+  /* ============ GRID & CARDS ============ */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px 18px 16px;
+    background: var(--panel);
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.18s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    background: var(--panel-2);
+  }
+  .card:hover::before { transform: scaleY(1); }
+
+  .card .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .card h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .card .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .card .domain {
+    margin-top: auto;
+    padding-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* tag color variants */
+  .tag.tool      { color: var(--accent-2); border-color: var(--accent-2); }
+  .tag.wiki      { color: var(--accent);   border-color: var(--accent); }
+  .tag.guide     { color: var(--accent-3); border-color: var(--accent-3); }
+  .tag.community { color: var(--success);  border-color: var(--success); }
+  .tag.official  { color: #b497ff;         border-color: #b497ff; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    margin-top: 60px;
+    padding: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  footer a { color: var(--accent-2); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .disclaimer {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #5d6789;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* fade-in on load */
+  .card, header.hero, section.cat { animation: rise 0.5s ease both; }
+  section.cat:nth-of-type(2) { animation-delay: 0.05s; }
+  section.cat:nth-of-type(3) { animation-delay: 0.10s; }
+  section.cat:nth-of-type(4) { animation-delay: 0.15s; }
+  section.cat:nth-of-type(5) { animation-delay: 0.20s; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 20px 16px 60px; }
+    header.hero { padding: 24px 20px; }
+    .logo { font-size: 16px; }
+    .kofi-banner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="logo">
+      <span class="coin" aria-hidden="true"></span>
+      IDLEON&nbsp;HUB
+    </div>
+    <h1>Every <span>Idleon</span> tool, calculator and guide worth bookmarking.</h1>
+    <p class="lede">A no-nonsense, hand-picked directory of the best community resources for Legends of Idleon. One page, no spam, no dead links.</p>
+    <div class="hero-actions">
+      <span class="pill">Updated <strong>May 2026</strong></span>
+      <span class="pill"><strong>20+</strong> curated resources</span>
+      <span class="pill">No tracking, no ads</span>
+    </div>
+
+    <!-- Ko-fi donation stub -->
+    <div class="kofi-banner">
+      <p><strong>Found this useful?</strong> This page is free and stays free. If it saved you time, a coffee helps keep it updated.</p>
+      <!-- TODO: replace YOUR_KOFI_USERNAME with your actual Ko-fi handle -->
+      <a class="kofi-btn" href="https://ko-fi.com/defiantcrow" target="_blank" rel="noopener noreferrer">
+        ☕ Buy me a coffee
+      </a>
+    </div>
+  </header>
+
+  <!-- ============ CATEGORY NAV ============ -->
+  <nav class="cats" aria-label="Categories">
+    <a href="#tools">› Tools &amp; Trackers</a>
+    <a href="#wikis">› Wikis &amp; Databases</a>
+    <a href="#guides">› Build Guides</a>
+    <a href="#community">› Community</a>
+    <a href="#official">› Official Links</a>
+  </nav>
+
+  <!-- ============ TOOLS ============ -->
+  <section class="cat" id="tools">
+    <h2>// Tools &amp; Trackers</h2>
+    <p class="sub">Account optimizers, progression checkers, and daily task trackers.</p>
+    <div class="grid">
+
+      <a class="card" href="https://idleontoolbox.com/" target="_blank" rel="noopener">
+        <div class="top"><h3>Idleon Toolbox</h3><span class="tag tool">Tool</span></div>
+        <p>All-in-one optimizer by Morojo. Character builds, crafting, alchemy, cards, and more — probably the most complete suite out there.</p>
+        <div class="domain">idleontoolbox.com</div>
+      </a>
+
+      <a class="card" href="https://www.idleonefficiency.com/" target="_blank" rel="noopener">
+        <div class="top"><h3>Idleon Efficiency</h3><span class="tag tool">Tool</span></div>
+        <p>By Sludger. Stamp tracker, equipment overview, achievement progress, and shareable public profiles. The go-to second opinion.</p>
+        <div class="domain">idleonefficiency.com</div>
+      </a>
+
+      <a class="card" href="https://idleonchecklist.com/" target="_blank" rel="noopener">
+        <div class="top"><h3>Idleon Checklist</h3><span class="tag tool">Tool</span></div>
+        <p>By symbiotescorns. Tracks daily and weekly tasks so you never waste a reset. Simple, focused, indispensable.</p>
+        <div class="domain">idleonchecklist.com</div>
+      </a>
+
+      <a class="card" href="https://idleoninsight.com/" target="_blank" rel="noopener">
+        <div class="top"><h3>Idleon Insight</h3><span class="tag tool">Tool</span></div>
+        <p>By Corbeno. Searchable database of game data with regex and string support — great when you need to look up a specific drop or item.</p>
+        <div class="domain">idleoninsight.com</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ WIKIS ============ -->
+  <section class="cat" id="wikis">
+    <h2>// Wikis &amp; Databases</h2>
+    <p class="sub">Reference material — items, mobs, quests, mechanics.</p>
+    <div class="grid">
+
+      <a class="card" href="https://idleon.wiki/" target="_blank" rel="noopener">
+        <div class="top"><h3>IdleOn MMO Wiki</h3><span class="tag wiki">Wiki</span></div>
+        <p>The community-maintained wiki (idleon.wiki). Bestiary, items, NPCs, quests, vendors, stamps, cards, and patch notes.</p>
+        <div class="domain">idleon.wiki</div>
+      </a>
+
+      <a class="card" href="https://idleon.info/" target="_blank" rel="noopener">
+        <div class="top"><h3>Idleon.info Wiki</h3><span class="tag wiki">Wiki</span></div>
+        <p>Alternate community wiki with a different layout and some unique calculators. Useful as a cross-reference.</p>
+        <div class="domain">idleon.info</div>
+      </a>
+
+      <a class="card" href="https://idleon.wiki/wiki/External_Resources" target="_blank" rel="noopener">
+        <div class="top"><h3>Wiki: External Resources</h3><span class="tag wiki">Wiki</span></div>
+        <p>The wiki's own master list of community tools and trackers. A good place to find newer resources as they emerge.</p>
+        <div class="domain">idleon.wiki/wiki/External_Resources</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ GUIDES ============ -->
+  <section class="cat" id="guides">
+    <h2>// Build Guides &amp; Strategy</h2>
+    <p class="sub">Class builds, skill priorities, and progression walkthroughs.</p>
+    <div class="grid">
+
+      <a class="card" href="https://gameslikefinder.com/article/idleon-builds/" target="_blank" rel="noopener">
+        <div class="top"><h3>Games Finder Build Guides</h3><span class="tag guide">Guide</span></div>
+        <p>Comprehensive talent and build guides for every Idleon class and skill, from early to endgame. Frequently updated.</p>
+        <div class="domain">gameslikefinder.com</div>
+      </a>
+
+      <a class="card" href="https://www.reddit.com/r/idleon/wiki/index/" target="_blank" rel="noopener">
+        <div class="top"><h3>r/idleon Subreddit Wiki</h3><span class="tag guide">Guide</span></div>
+        <p>Player-curated guides, FAQs, and "what should I do next" flowcharts. Good for new and returning players.</p>
+        <div class="domain">reddit.com/r/idleon/wiki</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ COMMUNITY ============ -->
+  <section class="cat" id="community">
+    <h2>// Community</h2>
+    <p class="sub">Where to ask questions, share progress, and find friends.</p>
+    <div class="grid">
+
+      <a class="card" href="https://discord.com/invite/idleon" target="_blank" rel="noopener">
+        <div class="top"><h3>Official Discord</h3><span class="tag community">Community</span></div>
+        <p>The main Idleon Discord server — active channels for help, builds, trading, and developer announcements from LavaFlame2.</p>
+        <div class="domain">discord.gg/idleon</div>
+      </a>
+
+      <a class="card" href="https://www.reddit.com/r/idleon/" target="_blank" rel="noopener">
+        <div class="top"><h3>r/idleon</h3><span class="tag community">Community</span></div>
+        <p>The subreddit. Patch discussion, screenshots, build help, and the occasional dev Q&amp;A.</p>
+        <div class="domain">reddit.com/r/idleon</div>
+      </a>
+
+      <a class="card" href="https://steamcommunity.com/app/1476970/discussions/" target="_blank" rel="noopener">
+        <div class="top"><h3>Steam Discussions</h3><span class="tag community">Community</span></div>
+        <p>Steam community forums for Legends of Idleon — bug reports, feedback threads, and longer-form posts.</p>
+        <div class="domain">steamcommunity.com</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ OFFICIAL ============ -->
+  <section class="cat" id="official">
+    <h2>// Official Links</h2>
+    <p class="sub">The game itself, on every platform.</p>
+    <div class="grid">
+
+      <a class="card" href="https://www.legendsofidleon.com/" target="_blank" rel="noopener">
+        <div class="top"><h3>Official Site</h3><span class="tag official">Official</span></div>
+        <p>The main Legends of Idleon homepage by LavaFlame2. News, updates, and links to every platform.</p>
+        <div class="domain">legendsofidleon.com</div>
+      </a>
+
+      <a class="card" href="https://store.steampowered.com/app/1476970/Legends_of_IdleOn__Idle_MMO/" target="_blank" rel="noopener">
+        <div class="top"><h3>Steam</h3><span class="tag official">Official</span></div>
+        <p>Play on PC via Steam. Free-to-play with optional gem purchases.</p>
+        <div class="domain">store.steampowered.com</div>
+      </a>
+
+      <a class="card" href="https://play.google.com/store/apps/details?id=com.lavaflame.MMO" target="_blank" rel="noopener">
+        <div class="top"><h3>Google Play</h3><span class="tag official">Official</span></div>
+        <p>Android version. Cross-saves with your Steam account.</p>
+        <div class="domain">play.google.com</div>
+      </a>
+
+      <a class="card" href="https://apps.apple.com/us/app/idleon-idle-mmo/id1636526901" target="_blank" rel="noopener">
+        <div class="top"><h3>App Store</h3><span class="tag official">Official</span></div>
+        <p>iOS version for iPhone and iPad. Cross-platform save support.</p>
+        <div class="domain">apps.apple.com</div>
+      </a>
+
+      <a class="card" href="https://www.youtube.com/c/IdleOn" target="_blank" rel="noopener">
+        <div class="top"><h3>Dev YouTube</h3><span class="tag official">Official</span></div>
+        <p>LavaFlame2's YouTube channel. Patch previews, dev streams, and behind-the-scenes content.</p>
+        <div class="domain">youtube.com/c/IdleOn</div>
+      </a>
+
+      <a class="card" href="https://www.twitch.tv/lava_flame2" target="_blank" rel="noopener">
+        <div class="top"><h3>Dev Twitch</h3><span class="tag official">Official</span></div>
+        <p>LavaFlame2's Twitch — live dev streams while new content is being built.</p>
+        <div class="domain">twitch.tv/lava_flame2</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div>Made by a fellow Idleon player · <a href="#">Back to top</a></div>
+    <div class="disclaimer">
+      Idleon Hub is an unofficial fan-made resource directory. Legends of Idleon is created by LavaFlame2.
+      This site is not affiliated with or endorsed by the game's developer. All linked resources belong to their respective creators.
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
