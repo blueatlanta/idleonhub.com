@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — Idleon Hub</title>
+<meta name="description" content="Privacy policy for Idleon Hub. What we collect, what our hosting provider collects, and how to contact us." />
+<meta name="robots" content="index, follow" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0e1320;
+    --bg-2: #131a2c;
+    --panel: #1a2238;
+    --panel-2: #222b46;
+    --border: #2a3556;
+    --text: #e8ecf7;
+    --muted: #8b95b8;
+    --accent: #ffd23f;
+    --accent-2: #4ad7d1;
+    --accent-3: #ff5d8f;
+    --shadow: 0 8px 0 rgba(0,0,0,0.4), 0 12px 24px rgba(0,0,0,0.35);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(74,215,209,0.10), transparent 60%),
+      radial-gradient(800px 500px at 110% 10%, rgba(255,93,143,0.10), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  /* header */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .logo {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    color: var(--accent);
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 #000;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .logo .coin {
+    width: 16px; height: 16px;
+    background: var(--accent);
+    border: 2px solid #000;
+    border-radius: 50%;
+    box-shadow: inset -3px -3px 0 rgba(0,0,0,0.25);
+  }
+  .back-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--muted);
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--panel);
+    transition: all 0.15s ease;
+  }
+  .back-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* content panel */
+  .doc {
+    padding: 36px 32px;
+    border: 2px solid var(--border);
+    background: linear-gradient(180deg, var(--panel) 0%, var(--bg-2) 100%);
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+  }
+
+  h1 {
+    margin: 0 0 6px;
+    font-size: clamp(26px, 4vw, 34px);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+  .updated {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+
+  h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 13px;
+    color: var(--accent-2);
+    letter-spacing: 1px;
+    margin: 36px 0 12px;
+    text-shadow: 2px 2px 0 #000;
+  }
+  h2:first-of-type { margin-top: 8px; }
+
+  p { margin: 0 0 14px; color: var(--text); }
+  p.muted { color: var(--muted); }
+
+  ul {
+    margin: 0 0 14px;
+    padding-left: 22px;
+  }
+  li { margin-bottom: 6px; }
+
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    background: var(--bg);
+    padding: 2px 6px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--accent);
+  }
+
+  .callout {
+    margin: 18px 0;
+    padding: 14px 18px;
+    background: rgba(74, 215, 209, 0.05);
+    border-left: 3px solid var(--accent-2);
+    border-radius: 3px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .callout strong { color: var(--text); }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  footer a { color: var(--accent-2); }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 20px 16px 60px; }
+    .doc { padding: 26px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top-nav">
+    <a class="logo" href="index.html">
+      <span class="coin" aria-hidden="true"></span>
+      IDLEON&nbsp;HUB
+    </a>
+    <a class="back-link" href="index.html">← Back to directory</a>
+  </div>
+
+  <div class="doc">
+    <h1>Privacy Policy</h1>
+    <span class="updated">Last updated: May 2026</span>
+
+    <p>This page explains what data is collected when you visit Idleon Hub, who collects it, and what your rights are. We've kept this short and in plain English on purpose.</p>
+
+    <div class="callout">
+      <strong>Short version:</strong> Idleon Hub itself doesn't collect or store any data about you. Our hosting provider (Cloudflare) automatically logs basic technical request information for security and performance purposes, as is standard for almost every website on the internet.
+    </div>
+
+    <h2>// What Idleon Hub collects</h2>
+    <p><strong>Nothing.</strong> This site is a static HTML page. It has no analytics, no cookies, no tracking pixels, no forms, no accounts, and no advertising scripts. We do not collect, store, or process any personal data about you directly.</p>
+
+    <h2>// What our hosting provider collects</h2>
+    <p>Idleon Hub is hosted on <a href="https://pages.cloudflare.com/" target="_blank" rel="noopener">Cloudflare Pages</a>. As with virtually all web hosting providers, Cloudflare automatically processes the following request metadata for every visit, for the purposes of security (DDoS protection, bot filtering), performance (caching), and operational reliability:</p>
+    <ul>
+      <li>Your IP address</li>
+      <li>Your user agent (browser and operating system)</li>
+      <li>The referring URL (the site you came from, if any)</li>
+      <li>The page you requested and the timestamp of the request</li>
+      <li>Approximate location (country / region) derived from your IP address</li>
+      <li>Connection metadata such as TLS fingerprint</li>
+    </ul>
+    <p>This processing happens at Cloudflare's network edge before any request reaches our site. We do not have direct access to these raw logs and we do not use this data for analytics, marketing, or profiling. For full details on what Cloudflare collects and how it's used, see <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's Privacy Policy</a>.</p>
+
+    <h2>// Cookies and local storage</h2>
+    <p>Idleon Hub does not set any cookies and does not use local storage. Cloudflare may set a small number of strictly necessary cookies (for example, to identify legitimate visitors and block malicious traffic). You can review these in <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener">Cloudflare's Cookie Policy</a>.</p>
+
+    <h2>// External links</h2>
+    <p>Idleon Hub is a directory of links to third-party websites (tools, wikis, guides, community pages, official game pages, etc.). Once you click through to any of those sites, their own privacy policies apply, not ours. We have no control over what data those sites collect.</p>
+
+    <h2>// Donations</h2>
+    <p>If you choose to support the site via the "Buy me a coffee" link, you will be taken to <a href="https://ko-fi.com/" target="_blank" rel="noopener">Ko-fi</a>, which is operated independently. Any data collected during the donation process is handled by Ko-fi under <a href="https://ko-fi.com/privacy" target="_blank" rel="noopener">their privacy policy</a>. We never receive your payment details.</p>
+
+    <h2>// Email suggestions</h2>
+    <p>If you email a suggestion to the address listed on the site, we'll receive your email address and whatever you choose to write. We use this only to read and respond to the suggestion. We don't add you to any mailing list and we don't share your email with anyone.</p>
+
+    <h2>// Your rights</h2>
+    <p>If you are in the EU, UK, or another region with similar data protection laws, you have rights regarding personal data processed about you — including access, correction, deletion, and objection. Because Idleon Hub itself doesn't collect or store personal data, most requests of this kind should be directed to Cloudflare (for hosting logs) using the contact information in their privacy policy linked above.</p>
+    <p>If you have any other privacy question relating to this site, you can email us via the contact link on the <a href="index.html">main page</a>.</p>
+
+    <h2>// Changes to this policy</h2>
+    <p>If we ever add analytics, advertising, or any other data-collecting feature to the site, we'll update this page first and bump the "Last updated" date at the top. We won't quietly change how data is handled.</p>
+
+  </div>
+
+  <footer>
+    <a href="index.html">← Back to Idleon Hub</a>
+  </footer>
+
+</div>
+</body>
+</html>
